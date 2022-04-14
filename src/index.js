@@ -40,7 +40,7 @@ class Yandex {
       }
       axios.post('https://translate.api.cloud.yandex.net/translate/v2/languages', query, {
         headers: {
-          Authorization: 'Bearer ' + apikey
+          Authorization: `Bearer ${this.apiKey}`
         }
       }).then(r => {
         resolve(r.data);
