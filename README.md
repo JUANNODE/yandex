@@ -1,24 +1,23 @@
 # About
+
 This module is Yandex API wrapper. (Currently under construction)
-It has official methods and non official (For example methods that are not in the official API but that people need)
+It has official methods and non-official. (For example, methods that aren't in the official API, but that people need)
 
-## Example 
-Install: 
-```
-npm i yandex
-```
+## Installation
 
-Usage:
-```js
-const { Yandex } = require('yandex');
-const yandex = new Yandex();
+In order to use this library, you need Node.js **14.x** or higher.
 
-yandex.image.search("fennec fox").then(r => {
-    console.log(r);
-}).catch(err => {
-    console.log(err);
-})
+```bash
+# Installing via npm
+npm install yandex
+
+# Installing via yarn
+yarn add yandex
+
+# Installing via pnpm
+pnpm install yandex
 ```
 
 ## Documentation
-Cooming soon because there's only 1 method rn: `image.search`
+
+Coming soon because there's only 1 method right now (`image.search`).
