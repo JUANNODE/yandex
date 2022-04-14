@@ -1,7 +1,7 @@
-# About
+# Yandex API Wrapper
 
-This module is Yandex API wrapper. (Currently under construction)
-It has official methods and non-official. (For example, methods that aren't in the official API, but that people need)
+This module is Yandex API wrapper.
+It has official methods and non-official (e.g, methods that aren't in the official API, but that people need).
 
 ## Installation
 
