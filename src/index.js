@@ -1,13 +1,13 @@
 const axios = require('axios');
 const randomUseragent = require('random-useragent');
 
-let options = {
+const options = {
   headers: {
     'accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
     'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'en,ru;q=0.9,en-GB;q=0.8,en-US;q=0.7',
     'cache-control': 'max-age=0',
-    'user-agent': ''
+    'user-agent': randomUseragent.getRandom();
   }
 }
 
@@ -18,7 +18,6 @@ function replaceAll(str, find, replace) {
 class Yandex {
   constructor(apiKey) {
     this.apiKey = apiKey;
-    this.useragent = randomUseragent.getRandom();
     this.image = [];
     this.translate = [];
     this.image.search = this.imageSearch;
@@ -26,7 +25,6 @@ class Yandex {
     this.translate.detect = this.translateDetect;
     this.translate.languages = this.translateLanguages;
     this.translateTranslate.bind(this);
-    options.headers['user-agent'] = this.useragent;
   }
 
   translateLanguages(query) {
