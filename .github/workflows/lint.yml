@@ -1,0 +1,28 @@
+name: 'Run lint'
+
+on:
+  push:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    if: ${{ !contains(github.event.head_commit.message, '[l skip]') }}
+    steps:
+      - name: 'Validate repository'
+        uses: actions/checkout@v1
+
+      - name: 'Setup Node.js'
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+
+      - name: 'Install dependencies'
+        run: npm ci
+
+      - name: 'Lint code'
+        uses: sibiraj-s/action-eslint@v2
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          eslint-args: '--ignore-path=.gitignore --quiet'
+          extensions: 'js,ts'
+          annotations: true

@@ -17,7 +17,3 @@ yarn add yandex
 # Installing via pnpm
 pnpm install yandex
 ```
-
-## Documentation
-
-Coming soon because there's only 1 method right now (`image.search`).
