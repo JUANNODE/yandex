@@ -17,15 +17,40 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
-class Yandex {
+let apikey;
 
-    constructor() {
-        this.name = null;
+class Yandex {
+    constructor(name) {
+        apikey = name;
         this.useragent = randomUseragent.getRandom();
         this.image = [];
+        this.translate = [];
         this.search = this.search;
+        this.test = "123";
         this.image.search = this.imagesearch;
+        this.translate.translate = this.translatetranslate;
+        this.translatetranslate.bind(this);
         options.headers["user-agent"] = this.useragent;
+    }
+    translatetranslate(query) {
+        return new Promise(function(resolve, reject) {
+            if (!query) {
+                reject({
+                    "info": "No query provided",
+                    "success": false
+                });
+                return;
+            }
+            axios.post("https://translate.api.cloud.yandex.net/translate/v2/translate", query, {
+                headers: {
+                    Authorization: "Bearer " + apikey
+                }
+            }).then(r => {
+                resolve(r.data);
+            }).catch(err => {
+                reject(err.response.data)
+            })
+        });
     }
     imagesearch(query) {
         return new Promise(function(resolve, reject) {
