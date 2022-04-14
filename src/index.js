@@ -29,8 +29,50 @@ class Yandex {
         this.test = "123";
         this.image.search = this.imagesearch;
         this.translate.translate = this.translatetranslate;
+        this.translate.detect = this.translatedetect;
+        this.translate.languages = this.translatelanguages;
         this.translatetranslate.bind(this);
         options.headers["user-agent"] = this.useragent;
+    }
+    translatelanguages(query) {
+        return new Promise(function(resolve, reject) {
+            if (!query) {
+                reject({
+                    "info": "No query provided",
+                    "success": false
+                });
+                return;
+            }
+            axios.post("https://translate.api.cloud.yandex.net/translate/v2/languages", query, {
+                headers: {
+                    Authorization: "Bearer " + apikey
+                }
+            }).then(r => {
+                resolve(r.data);
+            }).catch(err => {
+                reject(err.response.data)
+            })
+        });
+    }
+    translatedetect(query) {
+        return new Promise(function(resolve, reject) {
+            if (!query) {
+                reject({
+                    "info": "No query provided",
+                    "success": false
+                });
+                return;
+            }
+            axios.post("https://translate.api.cloud.yandex.net/translate/v2/detect", query, {
+                headers: {
+                    Authorization: "Bearer " + apikey
+                }
+            }).then(r => {
+                resolve(r.data);
+            }).catch(err => {
+                reject(err.response.data)
+            })
+        });
     }
     translatetranslate(query) {
         return new Promise(function(resolve, reject) {
