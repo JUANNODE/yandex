@@ -8,7 +8,7 @@ const options = {
     'accept-encoding': 'gzip, deflate, br',
     'accept-language': 'en,ru;q=0.9,en-GB;q=0.8,en-US;q=0.7',
     'cache-control': 'max-age=0',
-    'user-agent': '',
+    'user-agent': randomUseragent.getRandom(),
   },
 };
 
@@ -32,7 +32,6 @@ class Yandex {
     this.translate.detect = this.translateDetect;
     this.translate.languages = this.translateLanguages;
     this.translateTranslate.bind(this);
-    options.headers['user-agent'] = this.useragent;
   }
 
   // eslint-disable-next-line require-jsdoc
